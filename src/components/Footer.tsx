@@ -1,68 +1,74 @@
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+
 export default function Footer() {
-  const navLinks = ['Home', 'Problem', 'Solution', 'Agents']
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
+  const navLinks = [
+    { label: 'How it works', href: '#how-it-works' },
+    { label: 'Safety', href: '#safety' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'FAQ', href: '#faq' },
+  ]
   const legalLinks = ['Privacy Policy', 'Terms of Service']
 
   return (
-    <footer className="bg-white px-6 pb-6">
-      <div
-        className="bg-[#F5F5F5] rounded-3xl relative overflow-hidden"
-        style={{ minHeight: 320 }}
+    <footer className="bg-white px-6 pb-6" ref={ref}>
+      <motion.div
+        className="rounded-3xl relative overflow-hidden"
+        style={{ height: 480 }}
+        initial={{ opacity: 0, y: 40, scale: 0.98 }}
+        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        {/* Top bar: logo + links */}
-        <div className="flex items-start justify-between px-10 pt-8 relative z-10">
-          {/* Logo */}
-          <img
-            src="/images/logo-footer.svg"
-            alt="Mindoo"
-            className="object-contain object-left"
-            style={{ width: 140, height: 28 }}
-          />
+        <img
+          src="/mascot/footer.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: '30% center' }}
+        />
 
-          {/* Link columns */}
-          <div className="flex gap-16">
-            <div>
-              <p className="text-[11px] font-medium text-[#0059FF] uppercase tracking-[0.08em] mb-4">Navigation</p>
-              <ul className="space-y-3">
-                {navLinks.map((item) => (
-                  <li key={item}>
-                    <a href={`#${item.toLowerCase()}`} className="text-[13px] font-medium text-[#171717] hover:text-[#737373] transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[11px] font-medium text-[#0059FF] uppercase tracking-[0.08em] mb-4">Legal</p>
-              <ul className="space-y-3">
-                {legalLinks.map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-[13px] font-medium text-[#171717] hover:text-[#737373] transition-colors">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[11px] font-medium text-[#0059FF] uppercase tracking-[0.08em] mb-4">Social</p>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#" className="text-[13px] font-medium text-[#171717] hover:text-[#737373] transition-colors">LinkedIn</a>
-                </li>
-              </ul>
-            </div>
+        <motion.div
+          className="absolute top-8 right-10 z-10 flex gap-16"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.08em] mb-4" style={{ color: '#4DA8FF' }}>Navigation</p>
+            <ul className="space-y-3">
+              {navLinks.map((item, i) => (
+                <motion.li
+                  key={item.label}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.35, delay: 0.4 + i * 0.06 }}
+                >
+                  <a href={item.href} className="text-[13px] font-medium text-[#171717] hover:text-[#737373] transition-colors">
+                    {item.label}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
           </div>
-        </div>
-
-        {/* Large centered character — blue heart on cloud */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none">
-          <img
-            src="/images/footer-char.png"
-            alt=""
-            className="object-contain object-bottom"
-            style={{ height: 260, maxWidth: 520 }}
-          />
-        </div>
-      </div>
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.08em] mb-4" style={{ color: '#4DA8FF' }}>Legal</p>
+            <ul className="space-y-3">
+              {legalLinks.map((item, i) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.35, delay: 0.5 + i * 0.06 }}
+                >
+                  <a href="#" className="text-[13px] font-medium text-[#737373] hover:text-[#171717] transition-colors">{item}</a>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      </motion.div>
     </footer>
   )
 }

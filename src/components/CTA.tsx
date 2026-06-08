@@ -7,61 +7,83 @@ export default function CTA() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="bg-white relative overflow-hidden py-24" ref={ref}>
-      {/* Sine wave decorations */}
+    <section className="bg-white relative overflow-hidden min-h-screen flex items-center pb-40" ref={ref}>
+      {/* Elegant multi-color waves — modelled on make10000hours reference */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 1440 400"
+        viewBox="0 0 1440 800"
         preserveAspectRatio="xMidYMid slice"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M-100,200 C160,80 320,320 580,200 C840,80 1000,320 1260,200 C1380,140 1420,160 1540,200"
-          stroke="#0059FF"
-          strokeWidth="2"
-          fill="none"
-          opacity="0.7"
-        />
-        <path
-          d="M-100,220 C160,340 320,100 580,220 C840,340 1000,100 1260,220 C1380,280 1420,260 1540,220"
-          stroke="#4AC957"
-          strokeWidth="2"
-          fill="none"
-          opacity="0.7"
-        />
-        <path
-          d="M-100,190 C160,310 320,70 580,190 C840,310 1000,70 1260,190 C1380,250 1420,230 1540,190"
-          stroke="#E595C4"
-          strokeWidth="2"
-          fill="none"
-          opacity="0.7"
-        />
+        <defs>
+          <linearGradient id="waveFadeMask" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="white" stopOpacity="1" />
+            <stop offset="18%" stopColor="white" stopOpacity="1" />
+            <stop offset="32%" stopColor="white" stopOpacity="0" />
+            <stop offset="68%" stopColor="white" stopOpacity="0" />
+            <stop offset="82%" stopColor="white" stopOpacity="1" />
+            <stop offset="100%" stopColor="white" stopOpacity="1" />
+          </linearGradient>
+          <mask id="fadeCenter">
+            <rect width="1440" height="800" fill="url(#waveFadeMask)" />
+          </mask>
+        </defs>
+
+        <g mask="url(#fadeCenter)">
+          <path
+            d="M -100,270 C 180,170 420,370 720,270 C 1020,170 1260,330 1540,250"
+            stroke="#3B82F6"
+            strokeWidth="2.5"
+            opacity="0.7"
+          />
+          <path
+            d="M -100,305 C 200,180 480,440 760,305 C 1040,170 1280,430 1540,305"
+            stroke="#F472B6"
+            strokeWidth="2.5"
+            opacity="0.6"
+          />
+          <path
+            d="M -100,340 C 240,450 560,220 840,340 C 1120,460 1320,300 1540,360"
+            stroke="#22C55E"
+            strokeWidth="2.5"
+            opacity="0.65"
+          />
+          <path
+            d="M -100,375 C 160,280 400,470 660,375 C 920,280 1180,440 1440,355"
+            stroke="#7DD3FC"
+            strokeWidth="2"
+            opacity="0.55"
+          />
+          <path
+            d="M -100,410 C 300,280 600,540 960,410 C 1200,320 1360,450 1540,410"
+            stroke="#818CF8"
+            strokeWidth="2"
+            opacity="0.5"
+          />
+        </g>
       </svg>
 
       <div className="relative z-10 max-w-[860px] mx-auto px-8 text-center">
-        {/* Grouped characters */}
+        {/* Mascot replaces character cluster — same positioning */}
+        {/* MASCOT v2: replace with waving pose when commissioned */}
         <motion.div
           className="flex justify-center items-end gap-0 mb-10"
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <img src="/images/cta-char-purple.png" alt="" className="object-contain" style={{ width: 64, marginRight: -10 }} />
-          <img src="/images/cta-char-pink.png"   alt="" className="object-contain mb-4" style={{ width: 76, marginRight: -12 }} />
-          <img src="/images/cta-char-blue.png"   alt="" className="object-contain" style={{ width: 120 }} />
-          <img src="/images/cta-char-orange.png" alt="" className="object-contain mb-4" style={{ width: 76, marginLeft: -12 }} />
-          <img src="/images/cta-char-green.png"  alt="" className="object-contain" style={{ width: 64, marginLeft: -10 }} />
+          <img src="/mascot/Logo.png" alt="MedCheck" className="object-contain" style={{ width: 200, mixBlendMode: 'multiply' }} />
         </motion.div>
 
         <motion.h2
-          className="font-display font-bold text-[#171717] leading-[1.05] tracking-[-0.02em] mb-4"
-          style={{ fontSize: 72 }}
+          className="font-display font-medium text-[#171717] leading-[1.05] tracking-[-0.02em] mb-4"
+          style={{ fontSize: 52 }}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          Because healthcare is<br />already stressful enough.
+          Check interactions<br />before you prescribe,<br />not after something goes wrong.
         </motion.h2>
 
         <motion.p
@@ -70,18 +92,28 @@ export default function CTA() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          Create breathing room for your team,<br />
-          without hiring more people to do boring admin work.
+          Join early, free during beta.<br />
+          Built for the pace of clinical work.
         </motion.p>
 
-        <motion.button
-          className="text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-7 py-3 hover:bg-[#404040] transition-colors"
+        {/* TODO: replace href with real CTA URL before launch */}
+        <motion.a
+          href="mailto:hello@medcheck.app"
+          className="inline-block text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-7 py-3 hover:bg-[#404040] transition-colors"
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Book a demo
-        </motion.button>
+          Get early access
+        </motion.a>
+        <motion.p
+          className="text-[11px] text-[#737373] mt-3"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          No credit card required · $10/month after beta
+        </motion.p>
       </div>
     </section>
   )

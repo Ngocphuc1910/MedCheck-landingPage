@@ -6,100 +6,192 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' as const },
 })
 
+const cardSlide = (x: number, delay: number) => ({
+  initial: { opacity: 0, x, y: 16 },
+  animate: { opacity: 1, x: 0, y: 0 },
+  transition: { duration: 0.7, delay, ease: 'easeOut' as const },
+})
+
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="bg-white flex flex-col items-center pt-36 pb-0 px-8 relative overflow-hidden"
-    >
-      {/* Badge */}
-      <motion.div {...fadeUp(0)} className="mb-8">
-        <span className="text-[11px] font-medium text-[#737373] uppercase tracking-[0.1em]">
-          AI Intake &amp; Patient Access Automation
-        </span>
-      </motion.div>
-
-      {/* H1 */}
-      <motion.h1
-        {...fadeUp(0.1)}
-        className="font-display text-[88px] font-bold text-[#171717] text-center leading-[1.0] tracking-[-0.02em] mb-6 max-w-3xl"
+    /* Outer wrapper mirrors footer: bg-white + padding around the card */
+    <section id="hero" className="bg-white px-6 pb-3 pt-[40px]">
+      {/* Inner card — rounded, fills remaining viewport height */}
+      <div
+        className="rounded-3xl relative overflow-hidden flex flex-col items-center justify-center"
+        style={{ height: 'calc(100dvh - 55px)' }}
       >
-        The help healthcare teams were missing.
-      </motion.h1>
+        {/* Background image — same technique as footer */}
+        <img
+          src="/mascot/hero3.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
 
-      {/* Subtitle */}
-      <motion.p
-        {...fadeUp(0.2)}
-        className="text-[16px] font-medium text-[#737373] text-center leading-7 mb-10 max-w-md"
-      >
-        Mindoo takes on the routine tasks, so your team can focus on what
-        only humans can do. Intake done. Calls answered. Follow-ups handled.
-        You get more capacity with the same team.
-      </motion.p>
+        {/* Subtle dark overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.50) 55%, rgba(0,0,0,0.15) 100%)',
+          }}
+        />
 
-      {/* CTA Buttons */}
-      <motion.div {...fadeUp(0.3)} className="flex items-center gap-2 mb-20">
-        <button className="text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-5 py-2.5 hover:bg-[#404040] transition-colors">
-          Book a demo
-        </button>
-        <button className="text-[13px] font-medium text-[#0D0D0D] bg-white border border-[#E5E5E5] rounded-xl px-5 py-2.5 hover:bg-[#F5F5F5] transition-colors">
-          How it works
-        </button>
-      </motion.div>
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center px-4 w-full pb-20">
+          {/* H1 */}
+          <motion.h1
+            {...fadeUp(0.1)}
+            className="font-display text-[88px] font-medium text-white text-center leading-[1.0] tracking-[-0.02em] mb-6 max-w-3xl"
+            style={{ textShadow: '0 2px 24px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.25)' }}
+          >
+            Check interactions before you prescribe.
+          </motion.h1>
 
-      {/* Characters cluster + chat cards */}
-      <div className="relative w-full" style={{ height: 420 }}>
-        {/* Agent chat card — left edge */}
-        <motion.div
-          {...fadeUp(0.5)}
-          className="absolute left-4 top-8 bg-white border border-[#E5E5E5] rounded-2xl shadow-[0px_2px_12px_rgba(0,0,0,0.08)] overflow-hidden"
-          style={{ width: 280 }}
-        >
-          <div className="w-1 absolute top-0 left-0 bottom-0 bg-[#0059FF]" />
-          <div className="pl-4 pr-4 py-4">
-            <div className="flex items-center gap-2 mb-3">
-              <img src="/images/char-blue-chat.png" alt="" className="w-5 h-5 rounded-full object-cover flex-shrink-0" />
-              <span className="text-[12px] font-medium text-[#171717]">Max, the Intake agent</span>
+          {/* Subtitle */}
+          <motion.p
+            {...fadeUp(0.2)}
+            className="text-[16px] font-medium text-white/85 text-center leading-7 mb-10 max-w-md"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
+          >
+            Scan a prescription or search drug names. Add patient context. Get severity-graded
+            interaction alerts in under 10 seconds, built on FDA data.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div {...fadeUp(0.3)} className="flex items-center gap-2">
+            <a
+              href="mailto:hello@medcheck.app"
+              className="text-[13px] font-medium text-white bg-[#0D0D0D]/80 backdrop-blur-sm rounded-xl px-5 py-2.5 hover:bg-[#0D0D0D] transition-colors"
+            >
+              Get early access
+            </a>
+            <a
+              href="#how-it-works"
+              className="text-[13px] font-medium text-[#171717] bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl px-5 py-2.5 hover:bg-white transition-colors"
+            >
+              See how it works
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Three floating cards — hidden for now */}
+        <div className="w-full max-w-6xl grid grid-cols-3 gap-4 items-start hidden">
+
+          {/* Left — MAJOR */}
+          <motion.div {...cardSlide(-40, 0.45)}>
+            <div
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-6"
+              style={{
+                boxShadow: '0 8px 40px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(255,255,255,0.6)',
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-7 h-7 rounded-full bg-[#FF3B30] flex items-center justify-center flex-shrink-0">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M6 2v4M6 8.5v.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold text-[#171717] leading-none">Drug Interaction Found</p>
+                  <p className="text-[11px] text-[#999] mt-0.5">MedCheck · Just now</p>
+                </div>
+              </div>
+              <p className="text-[18px] font-bold text-[#171717] leading-tight mb-2">Warfarin + Amiodarone</p>
+              <p className="text-[13px] text-[#737373] leading-[1.6] mb-5">
+                Amiodarone inhibits CYP2C9 — warfarin exposure increases significantly. Serious bleeding risk in anticoagulated patients.
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold text-white bg-[#FF3B30] px-3 py-1 rounded-full">MAJOR</span>
+                <span className="text-[12px] font-semibold text-[#FF3B30]">Dose adjustment required</span>
+              </div>
             </div>
-            <p className="text-[12px] font-medium text-[#737373] leading-5">
-              I'm Max from Dr. Johnssons clinic. I'll help you prepare for your appointment today. What's the main reason for your visit today?
-            </p>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Grouped characters — center */}
-        <motion.div
-          className="absolute left-1/2 -translate-x-1/2 bottom-0 flex items-end justify-center"
-          style={{ width: 360 }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-        >
-          <img src="/images/char-purple.png" alt="" className="w-20 object-contain mb-2 z-10" style={{ marginRight: -12 }} />
-          <img src="/images/char-pink.png" alt="" className="w-24 object-contain mb-4 z-20" style={{ marginRight: -16 }} />
-          <img src="/images/char-blue.png" alt="" className="w-44 object-contain z-30" />
-          <img src="/images/char-orange.png" alt="" className="w-24 object-contain mb-4 z-20" style={{ marginLeft: -16 }} />
-          <img src="/images/char-green.png" alt="" className="w-20 object-contain mb-2 z-10" style={{ marginLeft: -12 }} />
-        </motion.div>
-
-        {/* Patient chat card — right edge */}
-        <motion.div
-          {...fadeUp(0.6)}
-          className="absolute right-4 top-8 bg-white border border-[#E5E5E5] rounded-2xl shadow-[0px_2px_12px_rgba(0,0,0,0.08)] overflow-hidden"
-          style={{ width: 280 }}
-        >
-          <div className="w-1 absolute top-0 left-0 bottom-0 bg-[#4AC957]" />
-          <div className="pl-4 pr-4 py-4">
-            <div className="flex items-center gap-2 mb-3">
-              <img src="/images/david-avatar.png" alt="" className="w-5 h-5 rounded-full object-cover flex-shrink-0" />
-              <span className="text-[12px] font-medium text-[#171717]">David</span>
-              <span className="ml-auto text-[10px] text-[#737373] font-medium">00:08</span>
+          {/* Center — MODERATE */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55, ease: 'easeOut' }}
+            className="mt-10"
+          >
+            <div
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-6"
+              style={{
+                boxShadow: '0 8px 40px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(255,255,255,0.6)',
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-7 h-7 rounded-full bg-[#FF9500] flex items-center justify-center flex-shrink-0">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M6 3v3.5M6 8.5v.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold text-[#171717] leading-none">Caution Advised</p>
+                  <p className="text-[11px] text-[#999] mt-0.5">MedCheck · 2.1 seconds</p>
+                </div>
+              </div>
+              <p className="text-[18px] font-bold text-[#171717] leading-tight mb-2">Metformin + Contrast Media</p>
+              <p className="text-[13px] text-[#737373] leading-[1.6] mb-5">
+                Concurrent use may increase lactic acidosis risk in patients with renal impairment. Temporary hold recommended.
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold text-white bg-[#FF9500] px-3 py-1 rounded-full">MODERATE</span>
+                <span className="text-[12px] font-semibold text-[#FF9500]">Monitor renal function</span>
+              </div>
             </div>
-            <p className="text-[12px] font-medium text-[#737373] leading-5">
-              I've been having headaches for about two weeks now. They're getting worse and worse
-            </p>
+          </motion.div>
+
+          {/* Right — ALL CLEAR */}
+          <motion.div {...cardSlide(40, 0.65)}>
+            <div
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-6"
+              style={{
+                boxShadow: '0 8px 40px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(255,255,255,0.6)',
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-7 h-7 rounded-full bg-[#34C759] flex items-center justify-center flex-shrink-0">
+                  <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+                    <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold text-[#171717] leading-none">Prescription Cleared</p>
+                  <p className="text-[11px] text-[#999] mt-0.5">MedCheck · 4.2 seconds</p>
+                </div>
+              </div>
+              <p className="text-[18px] font-bold text-[#171717] leading-tight mb-2">Aspirin + Atorvastatin</p>
+              <p className="text-[13px] text-[#737373] leading-[1.6] mb-5">
+                No clinically significant interactions detected for this patient profile. Safe to proceed.
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-bold text-white bg-[#34C759] px-3 py-1 rounded-full">ALL CLEAR</span>
+                <span className="text-[12px] font-semibold text-[#34C759]">Safe to prescribe</span>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* Trust bar — pinned to bottom of card */}
+        <div
+          className="absolute bottom-0 left-0 right-0 z-10 pb-5 pt-8 flex flex-col items-center"
+          style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.22))' }}
+        >
+          <p className="text-[11px] font-medium text-white/60 uppercase tracking-[0.1em] mb-3">
+            Trusted data from
+          </p>
+          <div className="flex items-center gap-4">
+            <img src="/assets/openfda-wordmark.svg" alt="OpenFDA" className="h-12 object-contain" style={{ width: 88, filter: 'brightness(0) invert(1)', opacity: 0.65 }} />
+            <img src="/assets/dailymed-logo.png" alt="DailyMed" className="h-7 w-auto object-contain" style={{ filter: 'brightness(0) invert(1)', opacity: 0.65 }} />
+            <img src="/assets/rxnorm-logo.svg" alt="RxNorm" className="h-7 w-auto object-contain" style={{ filter: 'brightness(0) invert(1)', opacity: 0.65 }} />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -4,7 +4,7 @@ export default function AnnouncementBar() {
       <div className="h-1 bg-gradient-to-r from-[#0059FF] via-[#4AC957] to-[#E595C4]" />
       <div className="bg-[#F5F5F5] px-4 py-3 flex justify-center items-center gap-2">
         <p className="text-[11px] font-medium text-[#404040]">
-          Mindoo raises €5M to build AI agents that handle intake, patient access and follow-up for healthcare teams.
+          Now checking 3,000+ drugs · Built on FDA data · Free during early access
         </p>
         <a
           href="#"

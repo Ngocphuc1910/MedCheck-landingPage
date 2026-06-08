@@ -1,14 +1,22 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { Pill, Languages, UserRound, Zap, ShieldAlert, Stethoscope } from 'lucide-react'
 import { useRef } from 'react'
 
-const pills = [
-  'No new systems to learn',
-  'Minor workflow changes',
-  'No tech expertise needed',
-  'Built for real-world patient conversations',
-  'Fully auditable, MDR, EU AI Act compliant, GDPR-native',
-  'Creates capacity without increasing headcount',
+const features = [
+  { label: 'Works with any drug list', color: '#3B82F6', Icon: Pill },
+  { label: 'Vietnamese prescription support', color: '#8B5CF6', Icon: Languages },
+  { label: 'Patient-aware recommendations', color: '#10B981', Icon: UserRound },
+  { label: 'Results in under 10 seconds', color: '#F59E0B', Icon: Zap },
+  { label: 'Major · Moderate · Minor severity', color: '#EF4444', Icon: ShieldAlert },
+  { label: 'Supports clinical judgment', color: '#06B6D4', Icon: Stethoscope },
+]
+
+const interactions = [
+  { pair: 'Warfarin + Amiodarone', level: 'MAJOR', color: '#FF3B30' },
+  { pair: 'Lisinopril + Spironolactone', level: 'MAJOR', color: '#FF3B30' },
+  { pair: 'Amiodarone + Ibuprofen', level: 'MOD', color: '#FF9500' },
+  { pair: 'Atorvastatin + Clarithromycin', level: 'MOD', color: '#FF9500' },
+  { pair: 'Aspirin + Antacids', level: 'MINOR', color: '#34C759' },
 ]
 
 export default function DesignedToFit() {
@@ -16,91 +24,135 @@ export default function DesignedToFit() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="bg-[#F5F5F5] px-8 pt-32 pb-16" ref={ref}>
-      <div className="max-w-[860px] mx-auto">
-        {/* Centered heading */}
-        <motion.h2
-          className="font-display font-bold text-[#171717] text-center leading-[1.05] tracking-[-0.02em] mb-4"
-          style={{ fontSize: 72 }}
-          initial={{ opacity: 0, y: 32 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
-          Designed to fit the way you already work.
-        </motion.h2>
+    <section className="bg-white px-5 md:px-8 pt-24 pb-28" ref={ref}>
+      <div className="max-w-[1080px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Left: copy + feature checklist */}
+          <div>
+            <motion.span
+              className="inline-block text-[11px] font-semibold uppercase tracking-[0.15em] text-[#999] mb-5"
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+            >
+              Designed for Clinicians
+            </motion.span>
 
-        <motion.p
-          className="text-center text-[15px] font-medium text-[#737373] leading-6 mb-12 max-w-lg mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }}
-        >
-          Mindoo doesn't replace staff. It takes on the repeat work around care. And your team can get back to
-          what they came into healthcare for.
-        </motion.p>
+            <motion.h2
+              className="font-display font-medium text-[#0A0A0A] leading-[1.05] tracking-[-0.02em] mb-5 text-[36px] md:text-[48px] lg:text-[54px]"
+              initial={{ opacity: 0, y: 32 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.05 }}
+            >
+              Built for the way you actually prescribe.
+            </motion.h2>
 
-        {/* Gray card */}
-        <motion.div
-          className="bg-white/60 rounded-3xl relative overflow-hidden"
-          style={{ minHeight: 500 }}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          {/* Characters left/right inside the card */}
-          <img
-            src="/images/char-purple.png"
-            alt=""
-            className="absolute bottom-24 left-6 object-contain"
-            style={{ width: 80 }}
-          />
-          <img
-            src="/images/char-green.png"
-            alt=""
-            className="absolute bottom-24 right-6 object-contain"
-            style={{ width: 80 }}
-          />
+            <motion.p
+              className="text-[15px] text-[#737373] leading-7 mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.12 }}
+            >
+              Fast enough to use on every prescription, every time. Supports clinical judgment without replacing it.
+            </motion.p>
 
-          {/* Center UI mockup */}
-          <div className="flex flex-col items-center pt-16 pb-6 px-8">
-            <img
-              src="/images/char-blue.png"
-              alt=""
-              className="object-contain mb-0"
-              style={{ width: 100 }}
-            />
-
-            {/* Chat bubble mockup */}
-            <div className="bg-white rounded-2xl border border-[#E5E5E5] shadow-sm p-5 mt-2 text-center" style={{ maxWidth: 320 }}>
-              <div className="flex items-center gap-2 justify-center mb-2">
-                <img src="/images/char-blue-chat.png" alt="" className="w-4 h-4 rounded-full" />
-                <span className="text-[11px] font-medium text-[#737373]">Max, the Intake Agent</span>
-              </div>
-              <p className="text-[13px] font-medium text-[#171717] leading-5">
-                I'll help you prepare for your appointment today. What's the main reason for your visit today?
-              </p>
-            </div>
-
-            {/* Pill tags */}
-            <div className="flex flex-wrap justify-center gap-2 mt-10 mb-4">
-              {pills.map((pill, i) => (
-                <motion.span
-                  key={pill}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.4 + i * 0.05 }}
-                  className="bg-white border border-[#E5E5E5] text-[#171717] text-[12px] font-medium px-4 py-1.5 rounded-full shadow-sm"
+            <div className="space-y-4">
+              {features.map((f, i) => (
+                <motion.div
+                  key={f.label}
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.45, delay: 0.2 + i * 0.07 }}
                 >
-                  {pill}
-                </motion.span>
+                  <div
+                    className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: `${f.color}15`,
+                      border: `1.5px solid ${f.color}30`,
+                    }}
+                  >
+                    <f.Icon size={14} color={f.color} strokeWidth={2} />
+                  </div>
+                  <span className="text-[14px] font-medium text-[#2A2A2A]">{f.label}</span>
+                </motion.div>
               ))}
             </div>
           </div>
-        </motion.div>
 
-        <p className="text-center text-[9px] font-medium text-[#737373] uppercase tracking-[0.1em] mt-6">
-          Patients feel heard. Staff feel supported. Time is used where it matters most.
-        </p>
+          {/* Right: app preview card */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div
+              className="bg-white rounded-3xl p-6 border border-[#EBEBEB]"
+              style={{
+                boxShadow: '0 20px 60px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04)',
+              }}
+            >
+              {/* Window chrome dots */}
+              <div className="flex items-center gap-1.5 mb-5">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
+                <span className="ml-auto text-[10px] text-[#BBBBBB] font-medium">
+                  MedCheck · Interaction Check
+                </span>
+              </div>
+
+              {/* Alert header */}
+              <div
+                className="rounded-xl px-4 py-3 mb-4 flex items-center justify-between"
+                style={{
+                  background: 'rgba(255, 59, 48, 0.05)',
+                  border: '1px solid rgba(255, 59, 48, 0.15)',
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#FF3B30] animate-pulse" />
+                  <span className="text-[12px] font-bold text-[#FF3B30]">HIGH ALERT</span>
+                </div>
+                <span className="text-[11px] text-[#BBBBBB]">5 interactions found</span>
+              </div>
+
+              {/* Interaction rows */}
+              <div className="space-y-2.5 mb-5">
+                {interactions.map((row, i) => (
+                  <motion.div
+                    key={row.pair}
+                    className="flex items-center justify-between gap-3 bg-[#F7F7F7] rounded-xl px-4 py-3 border border-[#EFEFEF]"
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.08 }}
+                  >
+                    <span className="text-[13px] font-medium text-[#0A0A0A] leading-4">{row.pair}</span>
+                    <span
+                      className="flex-shrink-0 text-[10px] font-bold px-2.5 py-1 rounded-full text-white"
+                      style={{ background: row.color }}
+                    >
+                      {row.level}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Summary bar */}
+              <div className="bg-[#F7F7F7] rounded-xl px-4 py-3 border border-[#EFEFEF]">
+                <p className="text-[11px] text-[#BBBBBB] text-center tracking-wide">
+                  All 45 drug pairs checked in{' '}
+                  <span className="text-[#34C759] font-semibold">4.2 seconds</span>
+                </p>
+              </div>
+            </div>
+
+            <p className="text-center text-[10px] font-medium text-[#999] uppercase tracking-[0.1em] mt-6">
+              Every prescription reviewed · Every pair checked · Every patient considered
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

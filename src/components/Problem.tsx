@@ -8,7 +8,7 @@ export default function Problem() {
 
   return (
     <section id="problem" className="bg-[#F5F5F5] relative overflow-hidden" style={{ minHeight: 880 }} ref={ref}>
-      {/* Scattered photos */}
+      {/* Scattered photos — keep exactly */}
       <motion.img
         src="/images/photo-doctor.png"
         alt=""
@@ -49,14 +49,14 @@ export default function Problem() {
       {/* Centered content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-8 pt-40 pb-48">
         <motion.h2
-          className="font-display font-bold leading-[1.05] tracking-[-0.02em] mb-10 max-w-3xl"
+          className="font-display font-medium leading-[1.05] tracking-[-0.02em] mb-10 max-w-3xl"
           style={{ fontSize: 76 }}
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-[#737373]">The real pressure isn't the care. </span>
-          <span className="text-[#171717]">It's everything around it.</span>
+          <span className="text-[#737373]">The risk isn't just the complexity. </span>
+          <span className="text-[#171717]">It's the ones you didn't catch.</span>
         </motion.h2>
 
         <motion.div
@@ -66,10 +66,10 @@ export default function Problem() {
           transition={{ duration: 0.7, delay: 0.15 }}
         >
           <p className="text-[16px] font-medium text-[#737373] leading-7">
-            The day breaks under intake, calls, symptom logs, and coordination long before the clinical work starts.
+            The average hospitalized patient receives 5–10 drugs simultaneously. Checking every pair combination manually is slow, error-prone, and routinely skipped under time pressure.
           </p>
           <p className="text-[16px] font-medium text-[#737373] leading-7">
-            More demand from hospitals. Tighter budgets. Fewer people to handle all that.
+            A single missed drug-drug interaction can cause bleeding, cardiac events, or organ failure. Memory alone is the most common approach — and the most dangerous.
           </p>
         </motion.div>
       </div>

@@ -1,28 +1,28 @@
 import { ErrorBoundary } from './components/ErrorBoundary'
-import AnnouncementBar from './components/AnnouncementBar'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Problem from './components/Problem'
-import Features from './components/Features'
-import Agents from './components/Agents'
-import PatientJourney from './components/PatientJourney'
+import HowItWorks from './components/Features'
+import SeveritySection from './components/SeveritySection'
 import DesignedToFit from './components/DesignedToFit'
-import Safety from './components/Safety'
+import Pricing from './components/Pricing'
+import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto min-h-screen bg-white font-sans overflow-x-hidden">
-      <ErrorBoundary name="AnnouncementBar"><AnnouncementBar /></ErrorBoundary>
+    <div className="min-h-screen bg-white font-sans overflow-x-hidden">
+      {/* Full-width — no container constraint */}
       <ErrorBoundary name="Nav"><Nav /></ErrorBoundary>
       <ErrorBoundary name="Hero"><Hero /></ErrorBoundary>
-      <ErrorBoundary name="Problem"><Problem /></ErrorBoundary>
-      <ErrorBoundary name="Features"><Features /></ErrorBoundary>
-      <ErrorBoundary name="Agents"><Agents /></ErrorBoundary>
-      <ErrorBoundary name="PatientJourney"><PatientJourney /></ErrorBoundary>
+
+      {/* Remaining sections — each controls its own inner max-width */}
+<ErrorBoundary name="HowItWorks"><HowItWorks /></ErrorBoundary>
+      {/* <ErrorBoundary name="SeveritySection"><SeveritySection /></ErrorBoundary> */}
       <ErrorBoundary name="DesignedToFit"><DesignedToFit /></ErrorBoundary>
-      <ErrorBoundary name="Safety"><Safety /></ErrorBoundary>
+      <ErrorBoundary name="Pricing"><Pricing /></ErrorBoundary>
+      <ErrorBoundary name="FAQ"><FAQ /></ErrorBoundary>
       <ErrorBoundary name="CTA"><CTA /></ErrorBoundary>
       <ErrorBoundary name="Footer"><Footer /></ErrorBoundary>
     </div>
