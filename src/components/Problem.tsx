@@ -25,7 +25,7 @@ export default function Problem() {
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.7, delay: 0.45 }}
         className="absolute top-40 left-16 rounded-2xl object-cover shadow-sm"
-        style={{ width: 160, height: 190, filter: 'blur(2px)' }}
+        style={{ width: 160, height: 190 }}
       />
       <motion.img
         src="/images/photo-surgeon.png"
@@ -34,7 +34,7 @@ export default function Problem() {
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.7, delay: 0.2 }}
         className="absolute rounded-2xl object-cover shadow-sm"
-        style={{ width: 160, height: 192, bottom: 140, left: 80, filter: 'blur(1px)' }}
+        style={{ width: 160, height: 192, bottom: 140, left: 80 }}
       />
       <motion.img
         src="/images/photo-gloves.png"
@@ -43,7 +43,7 @@ export default function Problem() {
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.7, delay: 0.5 }}
         className="absolute rounded-xl object-cover shadow-sm"
-        style={{ width: 72, height: 86, bottom: 160, right: 80, filter: 'blur(3px)' }}
+        style={{ width: 72, height: 86, bottom: 160, right: 80 }}
       />
 
       {/* Centered content */}
