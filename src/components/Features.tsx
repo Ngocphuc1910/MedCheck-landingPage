@@ -28,21 +28,26 @@ export default function HowItWorks() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 0.85', 'start 0.3'],
+    offset: ['start end', 'start start'],
   })
 
-  const phoneOpacity = useTransform(scrollYProgress, [0.08, 0.35], [0, 1])
-  const phoneY      = useTransform(scrollYProgress, [0.08, 0.35], [40, 0])
+  // progress = 0 when section bottom-edge crosses viewport bottom (section enters)
+  // progress = 1 when section top-edge reaches viewport top (section fully passed)
+  // All ranges below fire while section is visibly in the viewport.
 
-  const leftH3Opacity = useTransform(scrollYProgress, [0.42, 0.62], [0, 1])
-  const leftH3Y       = useTransform(scrollYProgress, [0.42, 0.62], [24, 0])
-  const leftPOpacity  = useTransform(scrollYProgress, [0.50, 0.70], [0, 1])
-  const leftPY        = useTransform(scrollYProgress, [0.50, 0.70], [16, 0])
+  const phoneOpacity = useTransform(scrollYProgress, [0.30, 0.52], [0, 1])
+  const phoneY      = useTransform(scrollYProgress, [0.30, 0.52], [60, 0])
+  const phoneScale  = useTransform(scrollYProgress, [0.30, 0.52], [0.9, 1])
 
-  const rightH3Opacity = useTransform(scrollYProgress, [0.58, 0.78], [0, 1])
-  const rightH3Y       = useTransform(scrollYProgress, [0.58, 0.78], [24, 0])
-  const rightPOpacity  = useTransform(scrollYProgress, [0.66, 0.86], [0, 1])
-  const rightPY        = useTransform(scrollYProgress, [0.66, 0.86], [16, 0])
+  const leftH3Opacity = useTransform(scrollYProgress, [0.44, 0.58], [0, 1])
+  const leftH3Y       = useTransform(scrollYProgress, [0.44, 0.58], [24, 0])
+  const leftPOpacity  = useTransform(scrollYProgress, [0.52, 0.66], [0, 1])
+  const leftPY        = useTransform(scrollYProgress, [0.52, 0.66], [16, 0])
+
+  const rightH3Opacity = useTransform(scrollYProgress, [0.58, 0.72], [0, 1])
+  const rightH3Y       = useTransform(scrollYProgress, [0.58, 0.72], [24, 0])
+  const rightPOpacity  = useTransform(scrollYProgress, [0.65, 0.79], [0, 1])
+  const rightPY        = useTransform(scrollYProgress, [0.65, 0.79], [16, 0])
 
   return (
     <section id="how-it-works" className="bg-white overflow-hidden" ref={ref}>
@@ -50,14 +55,14 @@ export default function HowItWorks() {
       <div className="text-center pt-24 pb-16 px-8">
         <h2 className="font-display font-medium leading-[1.0] tracking-[-0.02em]" style={{ fontSize: 64 }}>
           <span className="block text-[#171717]">
-            <Word progress={scrollYProgress} start={0.00} end={0.22}>From</Word>
-            <Word progress={scrollYProgress} start={0.06} end={0.28} mr={0}>scan</Word>
+            <Word progress={scrollYProgress} start={0.05} end={0.20}>From</Word>
+            <Word progress={scrollYProgress} start={0.10} end={0.25} mr={0}>scan</Word>
           </span>
           <span className="block text-[#737373]">
-            <Word progress={scrollYProgress} start={0.12} end={0.34}>to</Word>
-            <Word progress={scrollYProgress} start={0.17} end={0.39}>result</Word>
-            <Word progress={scrollYProgress} start={0.22} end={0.44}>in</Word>
-            <Word progress={scrollYProgress} start={0.27} end={0.49} mr={0}>seconds.</Word>
+            <Word progress={scrollYProgress} start={0.15} end={0.30}>to</Word>
+            <Word progress={scrollYProgress} start={0.19} end={0.34}>result</Word>
+            <Word progress={scrollYProgress} start={0.23} end={0.38}>in</Word>
+            <Word progress={scrollYProgress} start={0.27} end={0.42} mr={0}>seconds.</Word>
           </span>
         </h2>
       </div>
@@ -86,7 +91,7 @@ export default function HowItWorks() {
         {/* Center — phone mockup */}
         <motion.div
           className="flex-none flex justify-center"
-          style={{ width: 509, opacity: phoneOpacity, y: phoneY }}
+          style={{ width: 509, opacity: phoneOpacity, y: phoneY, scale: phoneScale }}
         >
           <div className="relative" style={{ width: 509, height: 660 }}>
             <img

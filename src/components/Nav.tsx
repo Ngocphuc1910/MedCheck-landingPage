@@ -19,8 +19,9 @@ export default function Nav() {
   return (
     <motion.div
       className="fixed left-0 right-0 z-50 flex justify-center px-4"
-      animate={{ top: scrolled ? 16 : 52 }}
-      initial={{ top: 52 }}
+      style={{ top: 16 }}
+      animate={{ y: scrolled ? 0 : 36 }}
+      initial={{ y: 36 }}
       transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <nav className="w-full max-w-[880px] bg-white border border-[#E5E5E5] rounded-2xl h-[50px] flex items-center justify-between px-4 shadow-[0px_2px_8px_rgba(99,99,99,0.1)]">

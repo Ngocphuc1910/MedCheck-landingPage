@@ -6,6 +6,18 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay, ease: 'easeOut' as const },
 })
 
+const h1Container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+}
+
+const wordVariant = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' as const } },
+}
+
+const H1_TEXT = 'Check interactions before you prescribe.'
+
 const cardSlide = (x: number, delay: number) => ({
   initial: { opacity: 0, x, y: 16 },
   animate: { opacity: 1, x: 0, y: 0 },
@@ -39,18 +51,28 @@ export default function Hero() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center px-4 w-full pb-20">
-          {/* H1 */}
+          {/* H1 — word-by-word reveal */}
           <motion.h1
-            {...fadeUp(0.1)}
+            variants={h1Container}
+            initial="hidden"
+            animate="visible"
             className="font-display text-[88px] font-medium text-white text-center leading-[1.0] tracking-[-0.02em] mb-6 max-w-3xl"
             style={{ textShadow: '0 2px 24px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.25)' }}
           >
-            Check interactions before you prescribe.
+            {H1_TEXT.split(' ').map((word, i) => (
+              <motion.span
+                key={i}
+                variants={wordVariant}
+                style={{ display: 'inline-block', marginRight: '0.28em' }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            {...fadeUp(0.2)}
+            {...fadeUp(0.65)}
             className="text-[16px] font-medium text-white/85 text-center leading-7 mb-10 max-w-md"
             style={{ textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
           >

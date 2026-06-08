@@ -7,7 +7,6 @@ export default function Footer() {
 
   const navLinks = [
     { label: 'How it works', href: '#how-it-works' },
-    { label: 'Safety', href: '#safety' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
   ]
@@ -38,32 +37,22 @@ export default function Footer() {
           <div>
             <p className="text-[11px] font-medium uppercase tracking-[0.08em] mb-4" style={{ color: '#4DA8FF' }}>Navigation</p>
             <ul className="space-y-3">
-              {navLinks.map((item, i) => (
-                <motion.li
-                  key={item.label}
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.35, delay: 0.4 + i * 0.06 }}
-                >
+              {navLinks.map((item) => (
+                <li key={item.label}>
                   <a href={item.href} className="text-[13px] font-medium text-[#171717] hover:text-[#737373] transition-colors">
                     {item.label}
                   </a>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </div>
           <div>
             <p className="text-[11px] font-medium uppercase tracking-[0.08em] mb-4" style={{ color: '#4DA8FF' }}>Legal</p>
             <ul className="space-y-3">
-              {legalLinks.map((item, i) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.35, delay: 0.5 + i * 0.06 }}
-                >
+              {legalLinks.map((item) => (
+                <li key={item}>
                   <a href="#" className="text-[13px] font-medium text-[#737373] hover:text-[#171717] transition-colors">{item}</a>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </div>

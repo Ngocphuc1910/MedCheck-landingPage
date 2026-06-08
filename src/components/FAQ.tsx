@@ -102,13 +102,15 @@ export default function FAQ() {
                 </span>
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndexes.has(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                  openIndexes.has(index) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                 }`}
               >
-                <p className="text-[#737373] pb-5 md:pb-6 px-1 text-[14px] md:text-[15px] leading-6 font-medium">
-                  {item.answer}
-                </p>
+                <div className="overflow-hidden">
+                  <p className="text-[#737373] pb-5 md:pb-6 px-1 text-[14px] md:text-[15px] leading-6 font-medium">
+                    {item.answer}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

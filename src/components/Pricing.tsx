@@ -34,21 +34,28 @@ export default function Pricing() {
   return (
     <section id="pricing" className="bg-white px-8 pt-24 pb-24" ref={ref}>
       <div className="max-w-[1080px] mx-auto">
-        <motion.h2
+        <h2
           className="font-display font-medium text-[#171717] text-center leading-[1.05] tracking-[-0.02em] mb-4"
           style={{ fontSize: 72 }}
-          initial={{ opacity: 0, y: 32 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
         >
-          Simple pricing.
-        </motion.h2>
+          {['Simple', 'pricing.'].map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 28 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.12, ease: 'easeOut' }}
+              style={{ display: 'inline-block', marginRight: '0.25em' }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h2>
 
         <motion.p
           className="text-center text-[15px] font-medium text-[#737373] leading-6 mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.18 }}
         >
           Designed to be accessible for individual clinicians.
         </motion.p>
@@ -73,20 +80,19 @@ export default function Pricing() {
             </div>
             <p className="text-[#737373] text-sm mb-6">During early access</p>
 
-            <div className="space-y-3 mb-8">
-              {freeFeatures.map((f, i) => (
-                <motion.div
-                  key={f}
-                  className="flex items-start gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.35, delay: 0.3 + i * 0.07 }}
-                >
+            <motion.div
+              className="space-y-3 mb-8"
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              {freeFeatures.map((f) => (
+                <div key={f} className="flex items-start gap-2">
                   <CheckIcon />
                   <span className="text-[#404040] text-sm">{f}</span>
-                </motion.div>
+                </div>
               ))}
-            </div>
+            </motion.div>
 
             {/* TODO: replace href with real CTA URL before launch */}
             <a
@@ -126,22 +132,21 @@ export default function Pricing() {
             </div>
             <p className="text-[#4B5563] text-sm mb-6">Hospital licensing available</p>
 
-            <div className="space-y-3 mb-8">
-              {proFeatures.map((f, i) => (
-                <motion.div
-                  key={f}
-                  className="flex items-start gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.35, delay: 0.4 + i * 0.07 }}
-                >
+            <motion.div
+              className="space-y-3 mb-8"
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              {proFeatures.map((f) => (
+                <div key={f} className="flex items-start gap-2">
                   <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#34C759' }}>
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-[#374151] text-sm">{f}</span>
-                </motion.div>
+                </div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Solid dark CTA — inverse of Standard's ghost button */}
             <a
