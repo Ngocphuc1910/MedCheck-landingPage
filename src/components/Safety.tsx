@@ -22,18 +22,19 @@ const cards = [
 
 export default function Safety() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="safety" className="bg-gradient-to-b from-[#F5F5F5] to-white px-20 pt-16 pb-32" ref={ref}>
-      <div className="max-w-[1280px] mx-auto">
+    <section id="safety" className="bg-[#F5F5F5] px-8 pt-24 pb-24" ref={ref}>
+      <div className="max-w-[1080px] mx-auto">
         <motion.h2
-          className="text-[58px] font-medium text-[#171717] leading-[64px] tracking-[-0.044em] mb-16"
+          className="font-display font-bold text-[#171717] text-center leading-[1.05] tracking-[-0.02em] mb-16"
+          style={{ fontSize: 72 }}
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          Highest safety standards, through and through.
+          Highest safety standards,<br />through and through.
         </motion.h2>
 
         <div className="grid grid-cols-3 gap-4">
@@ -45,15 +46,14 @@ export default function Safety() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
             >
-              <div className="overflow-hidden" style={{ height: 292 }}>
-                <img
-                  src={card.img}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
+              <div style={{ height: 220 }} className="overflow-hidden">
+                <img src={card.img} alt="" className="w-full h-full object-cover" />
               </div>
-              <div className="p-4 flex flex-col gap-4">
-                <h3 className="text-[20px] font-medium text-[#171717] leading-6 tracking-[-0.044em]">
+              <div className="p-5">
+                <h3
+                  className="font-display font-bold text-[#171717] leading-tight tracking-[-0.01em] mb-3"
+                  style={{ fontSize: 20 }}
+                >
                   {card.title}
                 </h3>
                 <p className="text-[13px] font-medium text-[#737373] leading-5">{card.body}</p>

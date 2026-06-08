@@ -1,6 +1,6 @@
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 
 const phases = [
   {
@@ -23,75 +23,79 @@ const phases = [
   },
 ]
 
-function PhaseRow({ phase, index }: { phase: (typeof phases)[0]; index: number }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-  const reversed = index % 2 === 1
-
-  return (
-    <div
-      ref={ref}
-      className={`flex gap-16 items-center ${reversed ? 'flex-row-reverse' : ''}`}
-    >
-      <motion.div
-        className="flex-1"
-        initial={{ opacity: 0, x: reversed ? 32 : -32 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7 }}
-      >
-        <h3 className="text-[36px] font-medium text-[#171717] leading-[42px] tracking-[-0.044em] mb-4">
-          {phase.label}
-        </h3>
-        <p className="text-[15px] font-medium text-[#737373] leading-6">{phase.body}</p>
-      </motion.div>
-
-      <motion.div
-        className="flex-1 relative rounded-2xl overflow-hidden"
-        style={{ height: 380 }}
-        initial={{ opacity: 0, x: reversed ? -32 : 32 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.1 }}
-      >
-        <img
-          src={phase.photo}
-          alt=""
-          className="w-full h-full object-cover"
-        />
-        {phase.ui && (
-          <img
-            src={phase.ui}
-            alt=""
-            className="absolute bottom-4 right-4 w-44 rounded-xl shadow-xl border border-white/20"
-          />
-        )}
-      </motion.div>
-    </div>
-  )
-}
-
 export default function PatientJourney() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const [activePhase, setActivePhase] = useState(0)
+  const photoRefs = useRef<(HTMLDivElement | null)[]>([])
+  const headingRef = useRef(null)
+  const headingInView = useInView(headingRef, { once: true, margin: '-80px' })
+
+  useEffect(() => {
+    const observers = photoRefs.current.map((el, i) => {
+      if (!el) return null
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActivePhase(i) },
+        { threshold: 0.4 }
+      )
+      obs.observe(el)
+      return obs
+    })
+    return () => observers.forEach((obs) => obs?.disconnect())
+  }, [])
 
   return (
-    <section className="bg-gradient-to-b from-[#F5F5F5] to-white px-20 py-32">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="bg-[#F5F5F5] flex items-start">
+      {/* Left — sticky */}
+      <div className="sticky top-0 h-screen flex flex-col justify-center pl-20 pr-8 py-16" style={{ width: '42%' }}>
         <motion.h2
-          ref={ref}
-          className="text-[58px] font-medium leading-[64px] tracking-[-0.044em] mb-24 max-w-2xl"
+          ref={headingRef}
+          className="font-display font-bold leading-[1.05] tracking-[-0.02em] mb-12"
+          style={{ fontSize: 50 }}
           initial={{ opacity: 0, y: 32 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={headingInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
           <span className="text-[#737373]">From start to finish. </span>
           <span className="text-[#171717]">A calmer, more predictable day.</span>
         </motion.h2>
 
-        <div className="space-y-28">
-          {phases.map((phase, i) => (
-            <PhaseRow key={i} phase={phase} index={i} />
-          ))}
+        <div key={activePhase} className="transition-all duration-300">
+          <h3 className="font-display font-bold text-[#171717] mb-3 tracking-[-0.01em]" style={{ fontSize: 28 }}>
+            {phases[activePhase].label}
+          </h3>
+          <p className="text-[15px] font-medium text-[#737373] leading-6">
+            {phases[activePhase].body}
+          </p>
         </div>
+      </div>
+
+      {/* Right — stacked full-height photos */}
+      <div style={{ width: '58%' }}>
+        {phases.map((phase, i) => (
+          <div
+            key={i}
+            ref={(el) => { photoRefs.current[i] = el }}
+            className="relative overflow-hidden"
+            style={{ height: '100vh' }}
+          >
+            <img
+              src={phase.photo}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+            {phase.ui && (
+              <motion.img
+                src={phase.ui}
+                alt=""
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="absolute rounded-2xl shadow-2xl"
+                style={{ bottom: 40, right: 40, width: 220 }}
+              />
+            )}
+          </div>
+        ))}
       </div>
     </section>
   )

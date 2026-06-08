@@ -1,6 +1,6 @@
 export default function Nav() {
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+    <div className="sticky top-4 z-50 flex justify-center px-4 -mb-[66px]">
       <nav className="w-full max-w-[880px] bg-white border border-[#E5E5E5] rounded-2xl h-[50px] flex items-center justify-between px-4 shadow-[0px_2px_8px_rgba(99,99,99,0.1)]">
         <img
           src="/images/logo-nav.svg"
