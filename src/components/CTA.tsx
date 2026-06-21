@@ -73,7 +73,7 @@ export default function CTA() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <img src="/mascot/Logo.png" alt="MedCheck" className="object-contain" style={{ width: 200, mixBlendMode: 'multiply' }} />
+          <img src="/mascot/Logo.png" alt="Phario" className="object-contain" style={{ width: 200, mixBlendMode: 'multiply' }} />
         </motion.div>
 
         <motion.h2
@@ -98,7 +98,7 @@ export default function CTA() {
 
         {/* TODO: replace href with real CTA URL before launch */}
         <motion.a
-          href="mailto:hello@medcheck.app"
+          href="mailto:hello@phario.app"
           className="inline-block text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-7 py-3 hover:bg-[#404040] transition-colors"
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

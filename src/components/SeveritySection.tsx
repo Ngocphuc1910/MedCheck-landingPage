@@ -59,7 +59,7 @@ export default function SeveritySection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          MedCheck doesn&apos;t just flag interactions. It gives you a clear clinical action category.
+          Phario doesn&apos;t just flag interactions. It gives you a clear clinical action category.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -133,7 +133,7 @@ export default function SeveritySection() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.55 }}
         >
-          5 drugs = 10 pairs · 10 drugs = 45 pairs · MedCheck checks all of them simultaneously
+          5 drugs = 10 pairs · 10 drugs = 45 pairs · Phario checks all of them simultaneously
         </motion.p>
       </div>
     </section>

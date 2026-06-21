@@ -26,8 +26,8 @@ export default function Nav() {
     >
       <nav className="w-full max-w-[880px] bg-white border border-[#E5E5E5] rounded-2xl h-[50px] flex items-center justify-between px-4 shadow-[0px_2px_8px_rgba(99,99,99,0.1)]">
         <img
-          src="/medcheck_logo.png"
-          alt="MedCheck"
+          src="/phario_logo.png"
+          alt="Phario"
           className="h-6 w-auto object-contain object-left"
         />
 
@@ -46,7 +46,7 @@ export default function Nav() {
         <div className="flex items-center gap-1">
           {/* TODO: replace href with real CTA URL before launch */}
           <a
-            href="mailto:hello@medcheck.app"
+            href="mailto:hello@phario.app"
             className="text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-4 py-1.5 hover:bg-[#404040] transition-colors"
           >
             Get early access

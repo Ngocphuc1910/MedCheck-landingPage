@@ -1,7 +1,7 @@
-# MedCheck — Product Context
+# Phario — Product Context
 
 ## What it is
-MedCheck is a clinical mobile app that checks drug-drug interactions and prescription safety in seconds. Built exclusively for healthcare professionals — physicians, nurses, and clinical pharmacists — who need fast, trustworthy answers at the point of care, not a Google search or a thick reference book.
+Phario is a clinical mobile app that checks drug-drug interactions and prescription safety in seconds. Built exclusively for healthcare professionals — physicians, nurses, and clinical pharmacists — who need fast, trustworthy answers at the point of care, not a Google search or a thick reference book.
 
 ---
 
@@ -16,11 +16,11 @@ Polypharmacy is one of the most dangerous and overlooked problems in modern medi
 
 ---
 
-## How MedCheck Works
+## How Phario Works
 1. **Scan or type** — photograph a handwritten prescription or manually search drug names
 2. **AI extracts** — OpenAI Vision reads the prescription and pulls out every medication automatically
 3. **Add patient context** — optionally input age, sex, weight, height, kidney function, liver function, INR level, and existing conditions
-4. **Instant check** — MedCheck cross-references all drug pairs against its curated clinical database, enriched with OpenFDA data
+4. **Instant check** — Phario cross-references all drug pairs against its curated clinical database, enriched with OpenFDA data
 5. **Clear results** — severity-graded alerts with explanations and action steps, personalized to the patient's profile
 
 ---
@@ -64,12 +64,12 @@ Is this drug right for this specific patient?
 - Department heads and chief pharmacists overseeing prescribing quality
 - Medical residents and interns learning safe prescribing habits
 
-**Geography:** Vietnam-first. High patient volumes, limited consultation time. MedCheck fits the fast-paced, high-volume clinical environment.
+**Geography:** Vietnam-first. High patient volumes, limited consultation time. Phario fits the fast-paced, high-volume clinical environment.
 
 ---
 
 ## Why Physicians Will Pay
-- Sandford Guide costs 500k VND/month and only covers antibiotics — MedCheck covers all drug classes
+- Sandford Guide costs 500k VND/month and only covers antibiotics — Phario covers all drug classes
 - One prevented adverse drug event saves far more than the subscription cost
 - Faster than any existing alternative — scan a prescription and get results in under 10 seconds
 - The only tool that personalizes interaction checks to a specific patient's profile
@@ -105,7 +105,7 @@ Is this drug right for this specific patient?
 
 ---
 
-## App Internals (from Pharmio codebase)
+## App Internals (from Phario codebase)
 
 **Tech:** React Native + Expo 54, TypeScript, Zustand, NativeWind, Reanimated 4.x, GPT-4o vision
 
@@ -148,4 +148,4 @@ Is this drug right for this specific patient?
 
 ## Layout Reference
 - `/Users/lap14154/myproject/make10000hours-landingPage` — additional layout patterns to borrow
-- Current layout mirrors Mindoo's 11-section structure; needs to be replaced with MedCheck content
+- Current layout mirrors Mindoo's 11-section structure; needs to be replaced with Phario content

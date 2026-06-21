@@ -41,7 +41,7 @@ export default function HowItWorks() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.32 }}
             >
-              Photograph a handwritten prescription or search drug names directly. MedCheck handles Vietnamese and English, extracting every medication automatically.
+              Photograph a handwritten prescription or search drug names directly. Phario handles Vietnamese and English, extracting every medication automatically.
             </motion.p>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function HowItWorks() {
           <div className="relative" style={{ width: 509, height: 660 }}>
             <img
               src="/images/phone-mockup.webp"
-              alt="MedCheck app"
+              alt="Phario app"
               loading="lazy"
               decoding="async"
               width={509}

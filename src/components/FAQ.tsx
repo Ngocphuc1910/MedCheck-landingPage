@@ -5,7 +5,7 @@ import { useRef } from 'react'
 // Layout cloned from make10000hours FAQSection.tsx — border-bottom dividers, chevron icon
 const faqData = [
   {
-    question: 'What does MedCheck actually check?',
+    question: 'What does Phario actually check?',
     answer: 'Every pair combination across your selected drug list, returned as Major (avoid), Moderate (monitor), or Minor (routine monitoring) with a specific action step. Up to 10 drugs simultaneously. Results in under 10 seconds.',
   },
   {
@@ -14,11 +14,11 @@ const faqData = [
   },
   {
     question: 'Does it support Vietnamese drug names?',
-    answer: 'Yes. MedCheck maps Vietnamese INN variants and generic names to standardized identifiers (esomeprazol to esomeprazole, paracetamol to acetaminophen). Prescription image parsing handles Vietnamese and English handwriting.',
+    answer: 'Yes. Phario maps Vietnamese INN variants and generic names to standardized identifiers (esomeprazol to esomeprazole, paracetamol to acetaminophen). Prescription image parsing handles Vietnamese and English handwriting.',
   },
   {
     question: 'Does it replace clinical judgment?',
-    answer: 'No. MedCheck is clinical decision support. It surfaces interaction information and personalized context so you can decide. It does not decide for you. You remain the clinician.',
+    answer: 'No. Phario is clinical decision support. It surfaces interaction information and personalized context so you can decide. It does not decide for you. You remain the clinician.',
   },
   {
     question: 'What happens to patient data I enter?',

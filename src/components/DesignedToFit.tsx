@@ -85,7 +85,7 @@ export default function DesignedToFit() {
                 <div className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
                 <div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
                 <span className="ml-auto text-[10px] text-[#BBBBBB] font-medium">
-                  MedCheck · Interaction Check
+                  Phario · Interaction Check
                 </span>
               </div>
 

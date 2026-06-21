@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-// Layout cloned from make10000hours PricingSection.tsx — same card structure, MedCheck content
+// Layout cloned from make10000hours PricingSection.tsx — same card structure, Phario content
 const freeFeatures = [
   'Drug interaction checking (all pairs)',
   '3,000+ drugs indexed',
@@ -96,7 +96,7 @@ export default function Pricing() {
 
             {/* TODO: replace href with real CTA URL before launch */}
             <a
-              href="mailto:hello@medcheck.app"
+              href="mailto:hello@phario.app"
               className="w-full py-3 px-6 bg-white border border-gray-200 text-[#171717] font-semibold rounded-full hover:bg-gray-50 transition-colors mt-auto text-center text-sm"
             >
               Get early access →
@@ -150,7 +150,7 @@ export default function Pricing() {
 
             {/* Solid dark CTA — inverse of Standard's ghost button */}
             <a
-              href="mailto:hello@medcheck.app"
+              href="mailto:hello@phario.app"
               className="w-full py-3 px-6 bg-[#111827] text-white font-semibold rounded-full hover:bg-[#1f2937] transition-colors mt-auto text-center text-sm"
             >
               Notify me when Pro launches →
