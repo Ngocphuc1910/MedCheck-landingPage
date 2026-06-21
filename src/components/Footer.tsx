@@ -10,7 +10,13 @@ export default function Footer() {
     { label: 'Pricing', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
   ]
-  const legalLinks = ['Privacy Policy', 'Terms of Service']
+  const legalLinks = [
+    { label: 'Privacy', href: '/privacy' },
+    { label: 'Terms', href: '/terms' },
+    { label: 'Support', href: '/support' },
+    { label: 'Methodology', href: '/methodology' },
+    { label: 'Subprocessors', href: '/subprocessors' },
+  ]
 
   return (
     <footer className="bg-white px-6 pb-6" ref={ref}>
@@ -55,8 +61,8 @@ export default function Footer() {
             <p className="text-[11px] font-medium uppercase tracking-[0.08em] mb-4" style={{ color: '#4DA8FF' }}>Legal</p>
             <ul className="space-y-3">
               {legalLinks.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-[13px] font-medium text-[#737373] hover:text-[#171717] transition-colors">{item}</a>
+                <li key={item.href}>
+                  <a href={item.href} className="text-[13px] font-medium text-[#737373] hover:text-[#171717] transition-colors">{item.label}</a>
                 </li>
               ))}
             </ul>

@@ -1,4 +1,11 @@
 {
+  "rewrites": [
+    { "source": "/privacy", "destination": "/index.html" },
+    { "source": "/terms", "destination": "/index.html" },
+    { "source": "/support", "destination": "/index.html" },
+    { "source": "/subprocessors", "destination": "/index.html" },
+    { "source": "/methodology", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
