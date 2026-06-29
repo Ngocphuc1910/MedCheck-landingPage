@@ -35,10 +35,10 @@ export const legalPages: Record<string, LegalPageContent> = {
     slug: 'privacy',
     eyebrow: 'Privacy Policy',
     title: 'Privacy Policy',
-    summary: 'How Phario handles app, account, purchase, support, and website data for the first App Store submission.',
-    updated: 'June 21, 2026',
+    summary: 'How Phario handles app, account, purchase, prescription-image, clinical-context, support, and website data.',
+    updated: 'June 29, 2026',
     glance: [
-      'Prescription image scanning is disabled in production v1.',
+      'Prescription image upload is available when you choose a prescription image for OCR-assisted extraction.',
       'Phario does not sell health-related data or use it for advertising.',
       'Website analytics are not currently enabled on phario.app.',
       `Privacy requests can be sent to ${supportEmail}.`,
@@ -49,7 +49,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Operator and Contact',
         body: [
           `Phario is operated by the individual developer submitting the app unless a company entity is formed and published in a later update. You can contact Phario at ${supportEmail}.`,
-          'This policy covers the Phario iOS app and the phario.app website. It is written for the first App Store version where prescription image scanning is not available in production.',
+          'This policy covers the Phario iOS app and the phario.app website. It is written for the first App Store version with manual drug lookup, optional patient context, subscription access, prescription-image OCR, and backend interaction screening.',
         ],
       },
       {
@@ -58,17 +58,21 @@ export const legalPages: Record<string, LegalPageContent> = {
         bullets: [
           'Account data, such as email address, sign-in identifiers, and authentication session data.',
           'Drug-check data, such as selected drugs, routes/forms, interaction results, and manually entered clinical context relevant to interaction screening.',
+          'Prescription-image data, such as an image you choose from your photo library for OCR-assisted medication and diagnosis extraction. Prescription images may contain patient names, prescriber details, medication names, dates, and other health-related information visible in the image.',
+          'OCR and extraction results, such as recognized medications, diagnoses, demographic fields, and extracted text or structured fields returned by the extraction service.',
           'Purchase data, such as subscription status, entitlement state, App Store transaction status, and RevenueCat customer identifiers.',
+          'Account data stored in Firebase/Firestore when configured, such as the Clerk-linked user ID, email, subscription status, and free-check quota state.',
           'Support and diagnostics data, such as support messages, app version, device/platform details, error state, and support IDs you choose to send us.',
-          'Website data. The current website does not intentionally run non-essential analytics or cookies. If analytics are enabled later, this policy and any required consent controls will be updated before those scripts run for users who require consent.',
+          'Website data. The current website does not intentionally run non-essential analytics or advertising cookies. If analytics are enabled later, this policy and any required consent controls will be updated before those scripts run for users who require consent.',
         ],
       },
       {
         id: 'image-scanning',
-        title: 'Prescription Images in Version 1',
+        title: 'Prescription Images and OCR',
         body: [
-          'Prescription image scanning and upload extraction are disabled in the production v1 app. The production app is designed around manual drug lookup, manual drug selection, and optional clinical context entry.',
-          'Phario will not process production prescription images or send prescription images to an AI extraction service until a later compliant extraction path is implemented and disclosed.',
+          'When you choose a prescription image from your photo library, Phario uploads a normalized image to the Phario backend for OCR-assisted extraction. The app does not access your photo library unless you choose an image through the picker.',
+          'The backend may use OCR, vision, or language-model services to identify medications, diagnoses, and limited patient-demographic details visible on the prescription. You should review and edit extracted items before running an interaction check.',
+          'Do not upload a prescription image unless you have permission to process the information it contains. Avoid uploading identifiers that are not needed for the check where you can reasonably crop or omit them before upload.',
         ],
       },
       {
@@ -76,6 +80,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'How We Use Data',
         bullets: [
           'Provide drug lookup, interaction checking, and optional patient-context personalization.',
+          'Extract medication and diagnosis candidates from prescription images you choose to submit.',
           'Authenticate accounts and protect access to account and subscription features.',
           'Manage purchases, restore purchases, and determine Pro entitlement status.',
           'Respond to support, privacy, deletion, and clinical-content correction requests.',
@@ -86,8 +91,8 @@ export const legalPages: Record<string, LegalPageContent> = {
         id: 'sharing',
         title: 'Third Parties and Subprocessors',
         body: [
-          'Phario uses service providers for authentication, purchases, hosting, and support operations. These providers process data only for the purposes needed to operate Phario.',
-          'The current production subprocessor list is maintained at /subprocessors. OpenAI is not listed as a production subprocessor for v1 because prescription image extraction is disabled in production.',
+          'Phario uses service providers for authentication, purchases, hosting, app data storage, backend screening, OCR/extraction, public drug-data lookup, and support operations. These providers process data only for the purposes needed to operate Phario.',
+          'The current production subprocessor and data-source list is maintained at /subprocessors. Prescription images and extracted clinical text may be processed by the backend and its OCR or language-model provider when you choose to submit an image.',
         ],
       },
       {
@@ -96,6 +101,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         bullets: [
           'You may request access, correction, deletion, portability, or restriction of personal data where those rights apply.',
           'You may withdraw consent for optional clinical-context processing by not entering that data or by clearing it in the app where available.',
+          'You may avoid prescription-image processing by using manual drug search instead of the photo-library OCR feature.',
           'You may request account deletion inside the app. If you need help, contact support from the account email address.',
           'California, EU, and UK users may have additional rights under applicable privacy laws. Phario will honor valid requests according to those laws.',
         ],
@@ -104,8 +110,8 @@ export const legalPages: Record<string, LegalPageContent> = {
         id: 'retention',
         title: 'Retention and Deletion',
         body: [
-          'Phario retains account and purchase records while needed to provide the service, manage subscriptions, prevent fraud, comply with law, and resolve support issues. Clinical check data is minimized for the v1 workflow and should not be treated as a permanent medical record.',
-          'When an account deletion request is completed, Phario deletes or anonymizes account-linked app data where legally and technically possible. Some purchase, tax, security, or dispute records may be retained when required by Apple, payment systems, or law.',
+          'Phario retains account and purchase records while needed to provide the service, manage subscriptions, prevent fraud, comply with law, and resolve support issues. Local check history may be stored on your device. Backend request records, OCR artifacts, model traces, and operational logs should be minimized and retained only as needed for security, debugging, quality, compliance, and abuse prevention.',
+          'When an account deletion request is completed, Phario deletes or anonymizes account-linked app data where legally and technically possible, including Clerk account data and Phario-controlled app records covered by the deletion flow. Some purchase, tax, security, operational, model-provider, dispute, or legal-retention records may be retained when required by Apple, service providers, or law.',
         ],
       },
       {
@@ -120,7 +126,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Changes',
         body: [
           'Material changes will be reflected by updating the "Last updated" date. If a change materially affects privacy practices, Phario will update this page and related App Store privacy information as required.',
-          'Change history: June 21, 2026 - initial App Store submission privacy policy for production v1.',
+          'Change history: June 29, 2026 - updated for prescription-image OCR upload, backend alert generation, Firebase/Firestore app data, and expanded subprocessor disclosure. June 21, 2026 - initial App Store submission privacy policy for production v1.',
         ],
       },
     ],
@@ -130,11 +136,11 @@ export const legalPages: Record<string, LegalPageContent> = {
     eyebrow: 'Terms of Use',
     title: 'Terms of Use',
     summary: 'The rules for using Phario, including medical limitations, subscription handling, and Apple EULA coverage.',
-    updated: 'June 21, 2026',
+    updated: 'June 29, 2026',
     glance: [
       'Phario is decision-support and reference software, not medical advice.',
       'Users must be 17 or older.',
-      'Prescription image scanning is not available in production v1.',
+      'Prescription-image OCR is optional and must be reviewed before use.',
       'Subscription pricing and renewal terms are shown by Apple before purchase.',
     ],
     sections: [
@@ -168,8 +174,16 @@ export const legalPages: Record<string, LegalPageContent> = {
         id: 'methodology',
         title: 'Methodology and Limitations',
         body: [
-          'Phario uses curated interaction records, public drug-label sources, RxNorm/RxNav, OpenFDA, DailyMed, and app clinical rules. The methodology and limitations are described at /methodology.',
+          'Phario uses curated interaction records, public drug-label sources, RxNorm/RxNav, OpenFDA, DailyMed, backend alert generation, OCR/extraction for images you submit, and app clinical rules. The methodology and limitations are described at /methodology.',
           'Drug data can be incomplete, outdated, ambiguous, or inappropriate for a particular patient. Phario results must be independently reviewed before use.',
+        ],
+      },
+      {
+        id: 'ocr',
+        title: 'Prescription Images and Extracted Text',
+        body: [
+          'If you choose a prescription image for OCR-assisted extraction, you are responsible for having the right to submit that image and for reviewing extracted medications, diagnoses, and patient fields before using them.',
+          'OCR and language-model extraction can be wrong, incomplete, or ambiguous. Phario may miss handwriting, abbreviations, local brand names, dose details, patient identifiers, or diagnosis context. Do not rely on extracted text without independent review.',
         ],
       },
       {
@@ -186,6 +200,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'User Responsibilities',
         bullets: [
           'Enter accurate drug and clinical-context information.',
+          'Review OCR-extracted medications, diagnoses, and patient fields before running or relying on a check.',
           'Avoid entering unnecessary identifiers or confidential information that is not needed for a check.',
           'Use Phario lawfully and only for legitimate medication-safety, reference, education, or clinician-discussion purposes.',
           'Do not attempt to reverse engineer, overload, scrape, or misuse Phario or its data sources.',
@@ -204,7 +219,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Changes',
         body: [
           'These Terms may be updated as Phario changes. Material updates will be reflected by changing the "Last updated" date.',
-          'Change history: June 21, 2026 - initial App Store submission terms for production v1.',
+          'Change history: June 29, 2026 - updated for optional prescription-image OCR and backend alert generation. June 21, 2026 - initial App Store submission terms for production v1.',
         ],
       },
     ],
@@ -272,11 +287,11 @@ export const legalPages: Record<string, LegalPageContent> = {
     slug: 'subprocessors',
     eyebrow: 'Subprocessors',
     title: 'Production Subprocessors',
-    summary: 'The providers Phario expects to use for production v1 operations. OpenAI is not a production subprocessor while prescription scanning is disabled.',
-    updated: 'June 21, 2026',
+    summary: 'The providers and public data sources Phario expects to use for production v1 operations, OCR/extraction, authentication, purchases, hosting, and drug-data lookup.',
+    updated: 'June 29, 2026',
     glance: [
-      'OpenAI is not used for production prescription image processing in v1.',
-      'Providers are limited to app hosting, account, purchase, and support operations.',
+      'Prescription-image OCR and backend alert generation may involve backend and AI/model providers.',
+      'RxNav/RxNorm, OpenFDA, and DailyMed are used as public drug-data sources.',
       'This list changes when material providers change.',
     ],
     sections: [
@@ -287,9 +302,15 @@ export const legalPages: Record<string, LegalPageContent> = {
           headers: ['Provider', 'Purpose', 'Data category', 'Region', 'Privacy / DPA'],
           rows: [
             ['Clerk', 'Authentication and account management', 'Account identifiers, email, session data', 'United States / global infrastructure', 'clerk.com/legal'],
+            ['Google Firebase / Firestore', 'App data plane, user document, quota/subscription state when configured', 'Clerk-linked user ID, email, subscription/quota records, authentication bridge data', 'Google global infrastructure', 'firebase.google.com/support/privacy'],
             ['RevenueCat', 'Subscription entitlement management', 'Purchase status, app user ID, entitlement data', 'United States / global infrastructure', 'revenuecat.com/privacy'],
             ['Apple', 'App Store distribution and in-app purchase billing', 'Apple account billing and transaction data', 'Apple infrastructure', 'apple.com/legal/privacy'],
+            ['Google', 'Optional Google sign-in provider through Clerk', 'Google OAuth identity data selected by the user', 'Google global infrastructure', 'policies.google.com/privacy'],
             ['Vercel', 'Website hosting and serverless account-deletion endpoint', 'Website request data, endpoint request metadata', 'Global infrastructure', 'vercel.com/legal/privacy-policy'],
+            ['Cloudflare', 'Backend alert/OCR API hosting and network delivery', 'Request metadata, selected drug/diagnosis/patient-context payloads, prescription images submitted for OCR', 'Cloudflare global infrastructure', 'cloudflare.com/privacypolicy'],
+            ['OpenAI', 'OCR, vision, language-model extraction, or alert-generation support when used by the backend', 'Prescription images, extracted text, selected medication/diagnosis/patient-context payloads, model prompts and outputs', 'OpenAI infrastructure', 'openai.com/policies/privacy-policy'],
+            ['U.S. National Library of Medicine RxNav/RxNorm', 'Drug identity normalization and ingredient lookup', 'Drug names, RxCUIs, request metadata', 'United States government infrastructure', 'nlm.nih.gov/privacy.html'],
+            ['OpenFDA / DailyMed', 'Public drug-label and medication-reference data sources', 'Drug names, labels, identifiers, request metadata where accessed', 'United States government infrastructure', 'open.fda.gov/privacy and dailymed.nlm.nih.gov'],
           ],
         },
       },
@@ -297,8 +318,8 @@ export const legalPages: Record<string, LegalPageContent> = {
         id: 'changes',
         title: 'Changes',
         body: [
-          'Phario updates this page when a material production provider changes. If prescription image extraction is enabled in a later version, the extraction provider will be added before production launch.',
-          'Change history: June 21, 2026 - initial subprocessor list for production v1.',
+          'Phario updates this page when a material production provider or data-source dependency changes.',
+          'Change history: June 29, 2026 - added Firebase/Firestore, Cloudflare backend, OpenAI, RxNav/RxNorm, OpenFDA/DailyMed, and Google sign-in disclosure. June 21, 2026 - initial subprocessor list for production v1.',
         ],
       },
     ],
@@ -308,10 +329,10 @@ export const legalPages: Record<string, LegalPageContent> = {
     eyebrow: 'Methodology',
     title: 'Methodology and Limitations',
     summary: 'How Phario produces drug-interaction decision-support information and what users must independently verify.',
-    updated: 'June 21, 2026',
+    updated: 'June 29, 2026',
     glance: [
       'Phario is reference and decision-support software, not diagnosis or treatment.',
-      'Users manually select drugs in production v1.',
+      'Users can manually select drugs or choose a prescription image for OCR-assisted extraction.',
       'Every result should be independently reviewed against the patient and source context.',
     ],
     sections: [
@@ -322,6 +343,7 @@ export const legalPages: Record<string, LegalPageContent> = {
           'Curated Phario interaction records and clinical rules.',
           'RxNorm/RxNav for normalized drug identity and naming support.',
           'OpenFDA and DailyMed label information for public drug-label context.',
+          'Backend alert-generation logic and OCR/extraction services for prescription images you choose to submit.',
           'Reviewed app data for severity, mechanism, monitoring, and action-category presentation.',
         ],
       },
@@ -329,7 +351,8 @@ export const legalPages: Record<string, LegalPageContent> = {
         id: 'logic',
         title: 'How Results Are Produced',
         body: [
-          'Users manually select drugs. Phario normalizes the selected drugs, checks available pair records, considers route/form where available, and may apply optional clinical context such as age, renal function, hepatic status, INR state, pregnancy, and selected risk factors.',
+          'Users manually select drugs or choose a prescription image for OCR-assisted extraction. OCR results are prefilled for user review; users should edit the drug, diagnosis, and patient-context chips before checking.',
+          'Phario normalizes selected drugs, resolves active ingredients where possible, sends selected drugs/ingredients, diagnoses, and optional patient context to the backend alert service, checks available pair records, considers route/form where available, and may apply optional clinical context such as age, renal function, hepatic status, INR state, pregnancy, and selected risk factors.',
           'Results are presented as severity-graded alerts and action categories intended to help users review the interaction basis before making an independent clinical decision.',
         ],
       },
@@ -338,6 +361,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Independent Review',
         bullets: [
           'Review the drug pair and checked ingredient identity.',
+          'Review OCR-extracted medication and diagnosis names before running the check.',
           'Review the mechanism, severity, action category, and monitoring recommendation.',
           'Review patient factors and any missing or assumed context.',
           'Consult original labeling, institutional protocols, pharmacy references, and clinical judgment before acting.',
@@ -348,6 +372,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Limitations',
         bullets: [
           'Drug coverage may be incomplete, especially for newly approved products, uncommon products, supplements, local formulations, or ambiguous brand names.',
+          'OCR and language-model extraction may misread handwriting, miss medications, confuse diagnoses, omit context, or extract patient identifiers that users did not intend to submit.',
           'Public label data may be incomplete, outdated, duplicated, or difficult to map to a specific clinical context.',
           'Route, dose, duration, organ function, pregnancy, age, and comorbidities can materially change clinical meaning.',
           'Phario v1 is not designed for pediatric-specific dosing or pediatric treatment decisions.',
@@ -357,7 +382,7 @@ export const legalPages: Record<string, LegalPageContent> = {
       {
         id: 'changes',
         title: 'Changes',
-        body: ['Change history: June 21, 2026 - initial methodology page for production v1.'],
+        body: ['Change history: June 29, 2026 - updated for optional prescription-image OCR, backend alert generation, and expanded data-source disclosure. June 21, 2026 - initial methodology page for production v1.'],
       },
     ],
   },
