@@ -45,7 +45,7 @@ export default function Nav() {
 
         <div className="flex items-center gap-1">
           <a
-            href="https://app.phario.app/check"
+            href="https://app.phario.app/"
             className="text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-4 py-1.5 hover:bg-[#404040] transition-colors"
           >
             Get early access

@@ -97,7 +97,7 @@ export default function CTA() {
         </motion.p>
 
         <motion.a
-          href="https://app.phario.app/check"
+          href="https://app.phario.app/"
           className="inline-block text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-7 py-3 hover:bg-[#404040] transition-colors"
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

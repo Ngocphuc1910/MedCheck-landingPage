@@ -82,7 +82,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div {...fadeUp(0.3)} className="flex items-center gap-2">
             <a
-              href="https://app.phario.app/check"
+              href="https://app.phario.app/"
               className="text-[13px] font-medium text-white bg-[#0D0D0D]/80 backdrop-blur-sm rounded-xl px-5 py-2.5 hover:bg-[#0D0D0D] transition-colors"
             >
               Get early access

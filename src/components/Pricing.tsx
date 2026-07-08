@@ -95,7 +95,7 @@ export default function Pricing() {
             </motion.div>
 
             <a
-              href="https://app.phario.app/check"
+              href="https://app.phario.app/"
               className="w-full py-3 px-6 bg-white border border-gray-200 text-[#171717] font-semibold rounded-full hover:bg-gray-50 transition-colors mt-auto text-center text-sm"
             >
               Get early access →
@@ -149,7 +149,7 @@ export default function Pricing() {
 
             {/* Solid dark CTA — inverse of Standard's ghost button */}
             <a
-              href="https://app.phario.app/check"
+              href="https://app.phario.app/"
               className="w-full py-3 px-6 bg-[#111827] text-white font-semibold rounded-full hover:bg-[#1f2937] transition-colors mt-auto text-center text-sm"
             >
               Notify me when Pro launches →
