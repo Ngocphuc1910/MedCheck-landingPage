@@ -36,11 +36,11 @@ export const legalPages: Record<string, LegalPageContent> = {
     eyebrow: 'Privacy Policy',
     title: 'Privacy Policy',
     summary: 'How Phario handles app, account, purchase, prescription-image, clinical-context, support, and website data.',
-    updated: 'June 29, 2026',
+    updated: 'July 8, 2026',
     glance: [
       'Prescription image upload is available when you choose a prescription image for OCR-assisted extraction.',
       'Phario does not sell health-related data or use it for advertising.',
-      'Website analytics are not currently enabled on phario.app.',
+      'Vercel Web Analytics is enabled on phario.app for privacy-friendly page-view metrics.',
       `Privacy requests can be sent to ${supportEmail}.`,
     ],
     sections: [
@@ -63,7 +63,7 @@ export const legalPages: Record<string, LegalPageContent> = {
           'Purchase data, such as subscription status, entitlement state, App Store transaction status, and RevenueCat customer identifiers.',
           'Account data stored in Firebase/Firestore when configured, such as the Clerk-linked user ID, email, subscription status, and free-check quota state.',
           'Support and diagnostics data, such as support messages, app version, device/platform details, error state, and support IDs you choose to send us.',
-          'Website data. The current website does not intentionally run non-essential analytics or advertising cookies. If analytics are enabled later, this policy and any required consent controls will be updated before those scripts run for users who require consent.',
+          'Website data. Phario uses Vercel Web Analytics to measure aggregate website usage, such as page views, referrers, browser/device details, and request metadata. Phario does not use website analytics for advertising or cross-site tracking.',
         ],
       },
       {
@@ -126,7 +126,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Changes',
         body: [
           'Material changes will be reflected by updating the "Last updated" date. If a change materially affects privacy practices, Phario will update this page and related App Store privacy information as required.',
-          'Change history: June 29, 2026 - updated for prescription-image OCR upload, backend alert generation, Firebase/Firestore app data, and expanded subprocessor disclosure. June 21, 2026 - initial App Store submission privacy policy for production v1.',
+          'Change history: July 8, 2026 - enabled Vercel Web Analytics disclosure for website page-view metrics. June 29, 2026 - updated for prescription-image OCR upload, backend alert generation, Firebase/Firestore app data, and expanded subprocessor disclosure. June 21, 2026 - initial App Store submission privacy policy for production v1.',
         ],
       },
     ],
@@ -136,7 +136,7 @@ export const legalPages: Record<string, LegalPageContent> = {
     eyebrow: 'Terms of Use',
     title: 'Terms of Use',
     summary: 'The rules for using Phario, including medical limitations, subscription handling, and Apple EULA coverage.',
-    updated: 'June 29, 2026',
+    updated: 'July 8, 2026',
     glance: [
       'Phario is decision-support and reference software, not medical advice.',
       'Users must be 17 or older.',
@@ -306,7 +306,7 @@ export const legalPages: Record<string, LegalPageContent> = {
             ['RevenueCat', 'Subscription entitlement management', 'Purchase status, app user ID, entitlement data', 'United States / global infrastructure', 'revenuecat.com/privacy'],
             ['Apple', 'App Store distribution and in-app purchase billing', 'Apple account billing and transaction data', 'Apple infrastructure', 'apple.com/legal/privacy'],
             ['Google', 'Optional Google sign-in provider through Clerk', 'Google OAuth identity data selected by the user', 'Google global infrastructure', 'policies.google.com/privacy'],
-            ['Vercel', 'Website hosting and serverless account-deletion endpoint', 'Website request data, endpoint request metadata', 'Global infrastructure', 'vercel.com/legal/privacy-policy'],
+            ['Vercel', 'Website hosting, Web Analytics, and serverless account-deletion endpoint', 'Website page-view events, referrers, browser/device details, request data, endpoint request metadata', 'Global infrastructure', 'vercel.com/legal/privacy-policy'],
             ['Cloudflare', 'Backend alert/OCR API hosting and network delivery', 'Request metadata, selected drug/diagnosis/patient-context payloads, prescription images submitted for OCR', 'Cloudflare global infrastructure', 'cloudflare.com/privacypolicy'],
             ['OpenAI', 'OCR, vision, language-model extraction, or alert-generation support when used by the backend', 'Prescription images, extracted text, selected medication/diagnosis/patient-context payloads, model prompts and outputs', 'OpenAI infrastructure', 'openai.com/policies/privacy-policy'],
             ['U.S. National Library of Medicine RxNav/RxNorm', 'Drug identity normalization and ingredient lookup', 'Drug names, RxCUIs, request metadata', 'United States government infrastructure', 'nlm.nih.gov/privacy.html'],
@@ -319,7 +319,7 @@ export const legalPages: Record<string, LegalPageContent> = {
         title: 'Changes',
         body: [
           'Phario updates this page when a material production provider or data-source dependency changes.',
-          'Change history: June 29, 2026 - added Firebase/Firestore, Cloudflare backend, OpenAI, RxNav/RxNorm, OpenFDA/DailyMed, and Google sign-in disclosure. June 21, 2026 - initial subprocessor list for production v1.',
+          'Change history: July 8, 2026 - added Vercel Web Analytics disclosure. June 29, 2026 - added Firebase/Firestore, Cloudflare backend, OpenAI, RxNav/RxNorm, OpenFDA/DailyMed, and Google sign-in disclosure. June 21, 2026 - initial subprocessor list for production v1.',
         ],
       },
     ],

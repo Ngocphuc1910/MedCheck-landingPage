@@ -96,9 +96,8 @@ export default function CTA() {
           Built for the pace of clinical work.
         </motion.p>
 
-        {/* TODO: replace href with real CTA URL before launch */}
         <motion.a
-          href="mailto:hello@phario.app"
+          href="https://app.phario.app/check"
           className="inline-block text-[13px] font-medium text-white bg-[#0D0D0D] rounded-xl px-7 py-3 hover:bg-[#404040] transition-colors"
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
